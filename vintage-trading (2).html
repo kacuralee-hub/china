@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guangzhou Vintage Trading Co Ltd — Worldwide supply of polymer products</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-bright: #1a5bb5;
+    --blue-mid: #1a3f8f;
+    --blue-dark: #1e1a5e;
+    --blue-deep: #2d1f6e;
+    --silver: #a8adb8;
+    --silver-light: #d0d4dc;
+    --white: #ffffff;
+    --off-white: #f4f6fa;
+    --text-dark: #1a1a2e;
+    --text-mid: #3a3a5c;
+    --text-light: #6b7280;
+    --border: #e2e6f0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', sans-serif; background: var(--white); color: var(--text-dark); font-size: 15px; line-height: 1.6; }
+
+  /* NAV */
+  .topbar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(26,91,181,.07); }
+  .topbar-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; gap: 24px; height: 68px; }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .logo-mas { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 22px; color: var(--silver); letter-spacing: 3px; }
+  .logo-albion { font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 10px; color: var(--blue-deep); letter-spacing: 5px; text-transform: uppercase; }
+  .topbar-nav { display: flex; align-items: center; gap: 2px; margin-left: auto; }
+  .topbar-nav a { font-size: 13px; font-weight: 500; color: var(--text-mid); text-decoration: none; padding: 8px 13px; border-radius: 6px; transition: background .18s, color .18s; }
+  .topbar-nav a:hover { background: var(--off-white); color: var(--blue-bright); }
+  .topbar-contacts { display: flex; flex-direction: column; align-items: flex-end; font-size: 12px; color: var(--text-light); line-height: 1.4; margin-left: 16px; flex-shrink: 0; }
+  .topbar-contacts strong { color: var(--text-dark); font-size: 13px; }
+
+  /* COMPANY HEADER BLOCK */
+  .company-header-block { border-bottom: 1px solid var(--border); padding: 20px 32px 24px; }
+  .company-header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+  .ch-logo-wrap { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+  .ch-company { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 22px; color: var(--text-dark); letter-spacing: .3px; }
+  .ch-tagline { font-size: 15px; color: var(--text-light); margin-top: 3px; }
+  .company-header-right { text-align: right; font-size: 13px; color: var(--text-light); line-height: 1.9; flex-shrink: 0; }
+  .ch-addr { font-size: 12px; color: var(--silver); margin-top: 2px; line-height: 1.6; }
+
+  /* STATIC HEADER BLOCK */
+  .site-header-block { background: var(--white); border-bottom: 2px solid var(--border); }
+  .site-header-inner { max-width: 1200px; margin: 0 auto; padding: 28px 32px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 24px; }
+  .header-logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .header-company { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px; color: var(--text-dark); letter-spacing: .3px; }
+  .header-tagline { font-size: 14px; color: var(--text-light); margin-top: 2px; }
+  .header-contacts-right { text-align: right; font-size: 13px; color: var(--text-light); line-height: 1.8; }
+  .header-contacts-right strong { color: var(--text-dark); }
+
+  /* MAIN SLIDER */
+  .main-slider-section { border: 1px solid var(--border); border-left: none; border-right: none; background: var(--off-white); }
+  .main-slider-inner { max-width: 1200px; margin: 0 auto; padding: 0 56px; position: relative; }
+  .ms-slide { display: none; grid-template-columns: 1fr 1fr; gap: 0; min-height: 380px; }
+  .ms-slide.active { display: grid; animation: fadeIn .45s ease; }
+  .ms-photo { aspect-ratio: auto; min-height: 380px; border-radius: 0; }
+  .ms-content { display: flex; flex-direction: column; justify-content: center; padding: 48px 40px; gap: 20px; background: var(--white); }
+  .ms-tag { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--silver); }
+  .ms-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(26px, 3vw, 40px); font-weight: 700; color: var(--text-dark); line-height: 1.1; }
+  .ms-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .ms-btns .btn-primary { background: var(--blue-bright); color: var(--white); }
+  .ms-btns .btn-primary:hover { background: var(--blue-mid); }
+  .ms-btns .btn-outline { border-color: var(--blue-bright); color: var(--blue-bright); }
+  .ms-btns .btn-outline:hover { background: var(--blue-bright); color: var(--white); }
+  .ms-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--blue-bright); transition: background .18s, border-color .18s; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+  .ms-arrow:hover { background: var(--blue-bright); color: var(--white); border-color: var(--blue-bright); }
+  .ms-prev { left: 8px; }
+  .ms-next { right: 8px; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-label { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 18px; }
+  .hero-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(32px, 4vw, 54px); font-weight: 700; line-height: 1.08; max-width: 640px; margin-bottom: 22px; animation: fadeIn .7s ease; }
+  .hero-sub { font-size: 16px; color: rgba(255,255,255,.72); max-width: 500px; margin-bottom: 36px; line-height: 1.65; animation: fadeIn .9s ease; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeIn 1.1s ease; }
+  .btn-primary { background: var(--white); color: var(--blue-dark); font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 28px; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: background .18s, transform .15s; display: inline-block; }
+  .btn-primary:hover { background: #e8ecf8; transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 14px; padding: 13px 28px; border: 1.5px solid rgba(255,255,255,.4); border-radius: 8px; cursor: pointer; text-decoration: none; transition: border-color .18s, background .18s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.08); }
+
+  /* PRODUCTS SLIDER */
+  .products-slider-wrap { position: relative; margin-top: 36px; padding: 0 36px; }
+  .products-overflow { overflow: hidden; }
+  .products-track { display: flex; gap: 20px; transition: transform .4s cubic-bezier(.4,0,.2,1); }
+  .products-track .product-card { flex: 0 0 calc(16.666% - 17px); min-width: 0; }
+  @media (max-width: 1100px) { .products-track .product-card { flex: 0 0 calc(33.333% - 14px); } }
+  @media (max-width: 600px) { .products-track .product-card { flex: 0 0 calc(50% - 10px); } }
+  .prod-dots { display: flex; gap: 7px; justify-content: center; margin-top: 24px; }
+  .prod-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background .2s, transform .2s; }
+  .prod-dot.active { background: var(--blue-bright); transform: scale(1.3); }
+
+  /* SECTIONS */
+  .section { padding: 72px 32px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 700; color: var(--text-dark); margin-bottom: 14px; }
+  .section-sub { font-size: 16px; color: var(--text-light); max-width: 780px; margin: 0 auto 48px; line-height: 1.7; }
+  .text-center { text-align: center; }
+
+  /* PRODUCTS */
+  .products-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; margin-top: 36px; }
+  @media (max-width: 1100px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 600px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+  .product-card { border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; transition: box-shadow .2s, transform .2s, border-color .2s; background: var(--white); }
+  .product-card:hover { box-shadow: 0 8px 32px rgba(26,91,181,.13); transform: translateY(-4px); border-color: var(--blue-bright); }
+  .product-img { width: 100%; aspect-ratio: 1; background: var(--off-white); display: flex; align-items: center; justify-content: center; font-size: 42px; }
+  .product-info { padding: 14px 12px 16px; }
+  .product-name { font-weight: 600; font-size: 14px; color: var(--text-dark); margin-bottom: 10px; }
+  .btn-buy { display: block; width: 100%; background: var(--blue-bright); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 13px; padding: 8px; border: none; border-radius: 6px; cursor: pointer; text-align: center; transition: background .18s; text-decoration: none; }
+  .btn-buy:hover { background: var(--blue-mid); }
+
+  /* WHY */
+  .why-section { background: linear-gradient(135deg, var(--blue-dark), var(--blue-deep)); color: var(--white); }
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 48px; }
+  @media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  .why-item { text-align: center; }
+  .why-icon { width: 76px; height: 76px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.2); margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; font-size: 30px; background: rgba(255,255,255,.06); }
+  .why-stat { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .why-label { font-size: 14px; color: rgba(255,255,255,.65); }
+
+  /* BRANDS */
+  .brands-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 14px; margin-top: 40px; }
+  @media (max-width: 900px) { .brands-grid { grid-template-columns: repeat(4, 1fr); } }
+  .brand-box { border: 1.5px solid var(--border); border-radius: 10px; aspect-ratio: 1.5; display: flex; align-items: center; justify-content: center; background: var(--off-white); font-size: 11px; font-weight: 600; color: var(--silver); letter-spacing: 1px; transition: border-color .2s, box-shadow .2s; }
+  .brand-box:hover { border-color: var(--blue-bright); box-shadow: 0 4px 16px rgba(26,91,181,.1); }
+
+  /* CERTS */
+  .certs-wrap { position: relative; margin-top: 40px; padding: 0 32px; }
+  .certs-overflow { overflow: hidden; }
+  .certs-track { display: flex; gap: 20px; transition: transform .4s ease; }
+  .cert-card { flex: 0 0 calc(20% - 16px); border: 1.5px solid var(--border); border-radius: 12px; aspect-ratio: .72; background: var(--off-white); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: var(--silver); font-weight: 500; }
+  @media (max-width: 900px) { .cert-card { flex: 0 0 calc(33% - 14px); } }
+  .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--blue-bright); transition: background .18s, border-color .18s; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .slider-arrow:hover { background: var(--blue-bright); color: var(--white); border-color: var(--blue-bright); }
+  .slider-arrow.prev { left: -4px; }
+  .slider-arrow.next { right: -4px; }
+
+  /* NEWS */
+  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  @media (max-width: 800px) { .news-grid { grid-template-columns: 1fr; } }
+  .news-card { border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; transition: box-shadow .2s, transform .2s; background: var(--white); }
+  .news-card:hover { box-shadow: 0 8px 28px rgba(26,91,181,.1); transform: translateY(-3px); }
+  .news-thumb { width: 100%; aspect-ratio: 2; background: linear-gradient(135deg, #dde3f0, #c8d0e8); display: flex; align-items: center; justify-content: center; font-size: 38px; color: rgba(26,30,94,.3); }
+  .news-body { padding: 20px; }
+  .news-date { font-size: 12px; color: var(--silver); margin-bottom: 8px; font-weight: 500; letter-spacing: .3px; }
+  .news-title { font-weight: 700; font-size: 17px; margin-bottom: 10px; color: var(--text-dark); }
+  .news-text { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+  /* CONTACT */
+  .contact-section { background: var(--off-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 40px; }
+  @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-img-box { border-radius: 14px; overflow: hidden; aspect-ratio: 1.5; background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-bright) 100%); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.35); font-size: 14px; font-weight: 500; }
+  .contact-form { display: flex; flex-direction: column; gap: 18px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--text-mid); margin-bottom: 6px; display: block; letter-spacing: .2px; }
+  .form-input { width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--text-dark); background: var(--white); transition: border-color .18s, box-shadow .18s; outline: none; }
+  .form-input:focus { border-color: var(--blue-bright); box-shadow: 0 0 0 3px rgba(26,91,181,.1); }
+  .btn-submit { background: var(--blue-bright); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 32px; border: none; border-radius: 8px; cursor: pointer; transition: background .18s, transform .15s; align-self: flex-end; }
+  .btn-submit:hover { background: var(--blue-mid); transform: translateY(-2px); }
+
+  /* GET IN TOUCH */
+  .git-section { text-align: center; padding: 64px 32px; }
+  .git-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: 28px 0 20px; }
+  .btn-git { padding: 13px 28px; border: 1.5px solid var(--blue-bright); border-radius: 8px; color: var(--blue-bright); font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 14px; text-decoration: none; transition: background .18s, color .18s; display: inline-block; }
+  .btn-git:hover { background: var(--blue-bright); color: var(--white); }
+  .git-legal { font-size: 13px; color: var(--text-light); }
+  .git-legal a { color: var(--blue-bright); text-decoration: none; }
+  .git-legal a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer { background: var(--text-dark); color: rgba(255,255,255,.7); padding: 48px 32px 28px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .footer-left { display: flex; flex-direction: column; gap: 20px; }
+  .footer-logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .footer-company { font-weight: 700; font-size: 15px; color: var(--white); }
+  .footer-tagline { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 2px; }
+  .footer-wechat { }
+  .footer-wechat-label { font-size: 12px; color: rgba(255,255,255,.35); margin-bottom: 8px; }
+  .wechat-qr { width: 58px; height: 58px; background: rgba(255,255,255,.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 26px; border: 1px solid rgba(255,255,255,.1); }
+  .footer-right { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; }
+  .footer-contacts { text-align: right; line-height: 1.85; font-size: 14px; }
+  .footer-contacts strong { color: var(--white); }
+  .footer-contacts .addr { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 8px; line-height: 1.7; }
+  .footer-socials { display: flex; gap: 10px; margin-top: 16px; }
+  .social-btn { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: 15px; cursor: pointer; text-decoration: none; transition: background .18s; }
+  .social-btn:hover { background: var(--blue-bright); border-color: var(--blue-bright); }
+  .footer-bottom { max-width: 1200px; margin: 20px auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: 8px; }
+  .footer-bottom a { color: rgba(255,255,255,.45); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--white); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#" class="logo-wrap">
+      <svg width="46" height="46" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stop-color="#1a5bb5"/>
+            <stop offset="100%" stop-color="#2d1f6e"/>
+          </linearGradient>
+        </defs>
+        <polygon points="50,8 92,72 8,72" fill="none" stroke="url(#logoGrad)" stroke-width="9" stroke-linejoin="round"/>
+        <polyline points="65,72 65,50 50,50" fill="none" stroke="url(#logoGrad)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-mas">MAS</span>
+        <span class="logo-albion">Albion</span>
+      </div>
+    </a>
+    <nav class="topbar-nav">
+      <a href="#about">About us</a>
+      <a href="#products">Products</a>
+      <a href="#why">Why choose us</a>
+      <a href="#brands">Brands</a>
+      <a href="#certs">Certificates</a>
+      <a href="#news">Latest news</a>
+      <a href="#contact">Contacts</a>
+    </nav>
+    <div class="topbar-contacts">
+      <strong>+86 158 2022 9964</strong>
+      <span>info@vintage.com</span>
+    </div>
+  </div>
+</header>
+
+<!-- COMPANY HEADER BLOCK -->
+<div class="company-header-block">
+  <div class="company-header-inner">
+    <div class="company-header-left">
+      <a href="#" class="ch-logo-wrap">
+        <svg width="52" height="52" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="chGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stop-color="#1a5bb5"/>
+              <stop offset="100%" stop-color="#2d1f6e"/>
+            </linearGradient>
+          </defs>
+          <polygon points="50,8 92,72 8,72" fill="none" stroke="url(#chGrad)" stroke-width="9" stroke-linejoin="round"/>
+          <polyline points="65,72 65,50 50,50" fill="none" stroke="url(#chGrad)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="ch-company">GUANGZHOU VINTAGE TRADING CO LTD</div>
+          <div class="ch-tagline">Worldwide supply of polymer products</div>
+        </div>
+      </a>
+    </div>
+    <div class="company-header-right">
+      <div>Mobile : +86 158 2022 9964</div>
+      <div>E-mail : info@vintage.com</div>
+      <div class="ch-addr">ADD: Room A037, Floor 2708, No. 140-148 Tiyu East Road,<br>Tianhe District, Guangzhou, China.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <h2 class="section-title text-center">About us</h2>
+    <p class="section-sub text-center">
+      GUANGZHOU VINTAGE TRADING CO LTD — your trusted partner in chemical and polymer material supply.
+      Headquartered in Guangzhou, we have been serving international markets for more than 5 years.
+      We focus on stable quality, competitive pricing, and smooth logistics.
+    </p>
+  </div>
+</section>
+
+<!-- MAIN SLIDER (after About us) -->
+<section class="main-slider-section">
+  <div class="main-slider-inner">
+    <button class="ms-arrow ms-prev" onclick="goSlide(-1)">&#8249;</button>
+
+    <div class="ms-slide active" id="slide-0">
+      <div class="ms-photo" style="background: linear-gradient(135deg,#1e3a6e,#2d6bbf); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.25); font-size:15px;">
+        Photo — polymer products
+      </div>
+      <div class="ms-content">
+        <p class="ms-tag">Slide 1 of 3</p>
+        <h2 class="ms-title">Find the products you need</h2>
+        <div class="ms-btns">
+          <a href="#products" class="btn-primary">Explore products</a>
+          <a href="#contact" class="btn-outline">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ms-slide" id="slide-1">
+      <div class="ms-photo" style="background: linear-gradient(135deg,#1a2e5c,#1a5bb5); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.25); font-size:15px;">
+        Photo — polymer products
+      </div>
+      <div class="ms-content">
+        <p class="ms-tag">Slide 2 of 3</p>
+        <h2 class="ms-title">Get accurate quotes</h2>
+        <div class="ms-btns">
+          <a href="#contact" class="btn-primary">Request a quote</a>
+          <a href="#why" class="btn-outline">Why choose us</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ms-slide" id="slide-2">
+      <div class="ms-photo" style="background: linear-gradient(135deg,#0d1f4a,#1e4f9c); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.25); font-size:15px;">
+        Photo — polymer products
+      </div>
+      <div class="ms-content">
+        <p class="ms-tag">Slide 3 of 3</p>
+        <h2 class="ms-title">Complete the trade quickly</h2>
+        <div class="ms-btns">
+          <a href="#about" class="btn-primary">About us</a>
+          <a href="#contact" class="btn-outline">Get in touch</a>
+        </div>
+      </div>
+    </div>
+
+    <button class="ms-arrow ms-next" onclick="goSlide(1)">&#8250;</button>
+  </div>
+</section>
+
+<!-- POPULAR PRODUCTS (static grid) -->
+<section class="section" id="products">
+  <div class="section-inner">
+    <h2 class="section-title text-center">Popular products</h2>
+    <div style="position:relative; padding: 0 36px; margin-top: 32px;">
+      <button class="slider-arrow prev" style="left:-4px;" onclick="slideProds(-1)">&#8249;</button>
+      <div class="products-overflow">
+        <div class="products-track" id="prodsTrack">
+          <div class="product-card"><div class="product-img">🔵</div><div class="product-info"><div class="product-name">ABS</div><a href="#contact" class="btn-buy">Buy</a></div></div>
+          <div class="product-card"><div class="product-img">⬜</div><div class="product-info"><div class="product-name">TiO₂</div><a href="#contact" class="btn-buy">Buy</a></div></div>
+          <div class="product-card"><div class="product-img">🟡</div><div class="product-info"><div class="product-name">Resins</div><a href="#contact" class="btn-buy">Buy</a></div></div>
+          <div class="product-card"><div class="product-img">🟤</div><div class="product-info"><div class="product-name">TDI / MDI</div><a href="#contact" class="btn-buy">Buy</a></div></div>
+          <div class="product-card"><div class="product-img">🔴</div><div class="product-info"><div class="product-name">Polyols</div><a href="#contact" class="btn-buy">Buy</a></div></div>
+          <div class="product-card"><div class="product-img">🟢</div><div class="product-info"><div class="product-name">Xanthan Gum</div><a href="#contact" class="btn-buy">Buy</a></div></div>
+          <div class="product-card"><div class="product-img">🟣</div><div class="product-info"><div class="product-name">EVA</div><a href="#contact" class="btn-buy">Buy</a></div></div>
+          <div class="product-card"><div class="product-img">🔶</div><div class="product-info"><div class="product-name">PVC</div><a href="#contact" class="btn-buy">Buy</a></div></div>
+          <div class="product-card"><div class="product-img">⚪</div><div class="product-info"><div class="product-name">HDPE</div><a href="#contact" class="btn-buy">Buy</a></div></div>
+        </div>
+      </div>
+      <button class="slider-arrow next" style="right:-4px;" onclick="slideProds(1)">&#8250;</button>
+    </div>
+    <div class="prod-dots" id="prodDots"></div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section why-section" id="why">
+  <div class="section-inner">
+    <h2 class="section-title text-center" style="color:#fff;">Why choose us</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🏆</div>
+        <div class="why-stat">5+</div>
+        <div class="why-label">Years of experience</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🤝</div>
+        <div class="why-stat">100+</div>
+        <div class="why-label">Business partners</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🧪</div>
+        <div class="why-stat">100+</div>
+        <div class="why-label">Chemical & polymer materials</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🌍</div>
+        <div class="why-stat">26</div>
+        <div class="why-label">Export countries</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="section" id="brands">
+  <div class="section-inner">
+    <h2 class="section-title text-center">Brands</h2>
+    <p class="section-sub text-center" style="margin-bottom: 0;">We work with leading manufacturers worldwide</p>
+    <div class="brands-grid">
+      <div class="brand-box">BRAND</div>
+      <div class="brand-box">BRAND</div>
+      <div class="brand-box">BRAND</div>
+      <div class="brand-box">BRAND</div>
+      <div class="brand-box">BRAND</div>
+      <div class="brand-box">BRAND</div>
+      <div class="brand-box">BRAND</div>
+      <div class="brand-box">BRAND</div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section class="section" id="certs" style="background: var(--off-white); border-top: 1px solid var(--border);">
+  <div class="section-inner">
+    <h2 class="section-title text-center">Certificates</h2>
+    <p class="section-sub text-center" style="margin-bottom: 0;">Quality-certified supply chain you can trust</p>
+    <div class="certs-wrap">
+      <button class="slider-arrow prev" onclick="slideCerts(-1)">&#8249;</button>
+      <div class="certs-overflow">
+        <div class="certs-track" id="certsTrack">
+          <div class="cert-card">📄<span>Certificate 1</span></div>
+          <div class="cert-card">📄<span>Certificate 2</span></div>
+          <div class="cert-card">📄<span>Certificate 3</span></div>
+          <div class="cert-card">📄<span>Certificate 4</span></div>
+          <div class="cert-card">📄<span>Certificate 5</span></div>
+          <div class="cert-card">📄<span>Certificate 6</span></div>
+          <div class="cert-card">📄<span>Certificate 7</span></div>
+        </div>
+      </div>
+      <button class="slider-arrow next" onclick="slideCerts(1)">&#8250;</button>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST NEWS -->
+<section class="section" id="news">
+  <div class="section-inner">
+    <h2 class="section-title text-center">Latest news</h2>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-thumb">🗞</div>
+        <div class="news-body">
+          <div class="news-date">25–30 April 2027</div>
+          <div class="news-title">Chinaplas 2026</div>
+          <div class="news-text">Join us at Chinaplas 2026 — the premier global plastics and rubber trade fair. We look forward to welcoming you there to discover the latest innovations and industry solutions.</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-thumb">🗞</div>
+        <div class="news-body">
+          <div class="news-date">25–30 April 2025</div>
+          <div class="news-title">Chinaplas 2025</div>
+          <div class="news-text">Join us at Chinaplas 2025 — the premier global plastics and rubber trade fair. We look forward to welcoming you there to discover the latest innovations and industry solutions.</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-thumb">🗞</div>
+        <div class="news-body">
+          <div class="news-date">25–30 April 2024</div>
+          <div class="news-title">Chinaplas 2024</div>
+          <div class="news-text">Join us at Chinaplas 2024 — the premier global plastics and rubber trade fair. We look forward to welcoming you there to discover the latest innovations and industry solutions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT US -->
+<section class="section contact-section" id="contact">
+  <div class="section-inner">
+    <h2 class="section-title text-center">Contact us</h2>
+    <div class="contact-grid">
+      <div class="contact-img-box">📍 Office photo</div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Your name</label>
+          <input type="text" class="form-input" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <label>Phone number</label>
+          <input type="tel" class="form-input" placeholder="+1 (000) 000-0000">
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" class="form-input" placeholder="email@example.com">
+        </div>
+        <button class="btn-submit">Contact me</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GET IN TOUCH -->
+<section class="git-section">
+  <div style="max-width: 600px; margin: 0 auto;">
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="git-btns">
+      <a href="tel:+8615820229964" class="btn-git">📞 Talk to our team</a>
+      <a href="mailto:info@vintage.com" class="btn-git">✉️ Email info@vintage.com</a>
+    </div>
+    <p class="git-legal">Need the legal details? <a href="#">View our sales conditions</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <a href="#" class="footer-logo-wrap">
+        <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="footerGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stop-color="#1a5bb5"/>
+              <stop offset="100%" stop-color="#2d1f6e"/>
+            </linearGradient>
+          </defs>
+          <polygon points="50,8 92,72 8,72" fill="none" stroke="url(#footerGrad)" stroke-width="9" stroke-linejoin="round"/>
+          <polyline points="65,72 65,50 50,50" fill="none" stroke="url(#footerGrad)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="footer-company">GUANGZHOU VINTAGE TRADING CO LTD</div>
+          <div class="footer-tagline">Worldwide supply of polymer products</div>
+        </div>
+      </a>
+      <div class="footer-wechat">
+        <div class="footer-wechat-label">WeChat</div>
+        <div class="wechat-qr">📱</div>
+      </div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-contacts">
+        <div><strong>Mobile:</strong> +86 158 2022 9964</div>
+        <div><strong>E-mail:</strong> info@vintage.com</div>
+        <div class="addr">Room A037, Floor 2708, No. 140-148<br>Tiyu East Road, Tianhe District<br>Guangzhou, China</div>
+      </div>
+      <div class="footer-socials">
+        <a href="#" class="social-btn" title="Telegram">✈</a>
+        <a href="#" class="social-btn" title="WhatsApp">💬</a>
+        <a href="#" class="social-btn" title="WeChat">🟢</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Copyright © 2026 All Rights Reserved</span>
+    <a href="http://www.tcc-china.com/" target="_blank">www.tcc-china.com</a>
+  </div>
+</footer>
+
+<script>
+  // Main slider (after About us)
+  let curSlide = 0;
+  const msSlides = document.querySelectorAll('.ms-slide');
+  const totalMS = msSlides.length;
+  let msTimer = setInterval(() => goSlide(1), 5000);
+
+  function goSlide(dir) {
+    msSlides[curSlide].classList.remove('active');
+    curSlide = (curSlide + dir + totalMS) % totalMS;
+    msSlides[curSlide].classList.add('active');
+    clearInterval(msTimer);
+    msTimer = setInterval(() => goSlide(1), 5000);
+  }
+
+  // Products slider
+  let prodIdx = 0;
+  const VISIBLE = 6;
+  const prodsTrack = document.getElementById('prodsTrack');
+  const prodCards = prodsTrack ? prodsTrack.children : [];
+  const totalProds = prodCards.length;
+  const maxProdIdx = Math.max(0, totalProds - VISIBLE);
+
+  const dotsEl = document.getElementById('prodDots');
+  if (dotsEl && totalProds > VISIBLE) {
+    const pageCount = Math.ceil(totalProds / VISIBLE);
+    for (let i = 0; i < pageCount; i++) {
+      const d = document.createElement('div');
+      d.className = 'prod-dot' + (i === 0 ? ' active' : '');
+      d.onclick = () => goProd(i * VISIBLE);
+      dotsEl.appendChild(d);
+    }
+  }
+
+  function updateProdDots() {
+    document.querySelectorAll('.prod-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === Math.round(prodIdx / VISIBLE));
+    });
+  }
+
+  function slideProds(dir) {
+    if (!prodsTrack || !prodCards.length) return;
+    const cardW = prodCards[0].offsetWidth + 20;
+    prodIdx = Math.max(0, Math.min(prodIdx + dir, maxProdIdx));
+    prodsTrack.style.transform = `translateX(-${prodIdx * cardW}px)`;
+    updateProdDots();
+  }
+
+  function goProd(n) {
+    if (!prodsTrack || !prodCards.length) return;
+    const cardW = prodCards[0].offsetWidth + 20;
+    prodIdx = Math.min(n, maxProdIdx);
+    prodsTrack.style.transform = `translateX(-${prodIdx * cardW}px)`;
+    updateProdDots();
+  }
+
+  // Certs slider
+  let certIdx = 0;
+  function slideCerts(dir) {
+    const track = document.getElementById('certsTrack');
+    if (!track) return;
+    const items = track.children.length;
+    certIdx = Math.max(0, Math.min(certIdx + dir, items - 5));
+    const w = track.children[0].offsetWidth + 20;
+    track.style.transform = `translateX(-${certIdx * w}px)`;
+  }
+</script>
+</body>
+</html>
